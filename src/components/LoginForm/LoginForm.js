@@ -9,6 +9,11 @@ const LoginForm = () => {
   const enteredNameIsValid = enteredName.trim() !== "";
   const nameInputIsInvalid = !enteredNameIsValid && nameIsTouched;
 
+  let formIsValid = false;
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  }
+
   const nameOnChange = (e) => {
     setEnteredName(e.target.value);
   };
@@ -19,12 +24,15 @@ const LoginForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setNameIsTouched(true);
     if (!enteredNameIsValid) return;
     console.log(enteredName);
     setEnteredName("");
     setNameIsTouched(false);
   };
+
+  const nameInputClasses = nameInputIsInvalid
+    ? " border-red-700 border-2"
+    : null;
   return (
     <>
       <Card>
@@ -48,11 +56,24 @@ const LoginForm = () => {
                 value={enteredName}
                 onChange={nameOnChange}
                 onBlur={nameOnBlur}
-                className="rounded-md outline-none p-1 w-full"
+                className={`${nameInputClasses} rounded-md p-1 w-full outline-none`}
               ></input>
               {nameInputIsInvalid && (
-                <p className="text-red-700">Enter a valid name!</p>
+                <p className="text-red-700 font-semibold">
+                  Enter a valid name!
+                </p>
               )}
+            </div>
+            <div>
+              <button
+                type="submit"
+                disabled={!formIsValid}
+                className={`rounded-full p-2 w-full ${
+                  !formIsValid ? "bg-gray-500/80" : "bg-rose-500"
+                }`}
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>
