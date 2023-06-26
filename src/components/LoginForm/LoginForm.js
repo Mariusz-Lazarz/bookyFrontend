@@ -1,38 +1,31 @@
 import Card from "../UI/Card";
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
+import useInput from "../../hooks/use-input";
 
 const LoginForm = () => {
-  const [enteredName, setEnteredName] = useState("");
-  const [nameIsTouched, setNameIsTouched] = useState(false);
-
-  const enteredNameIsValid = enteredName.trim() !== "";
-  const nameInputIsInvalid = !enteredNameIsValid && nameIsTouched;
+  const {
+    enteredValue: enteredName,
+    enteredValueIsValid: enteredNameIsValid,
+    valueInputIsInvalid: nameInputIsInvalid,
+    valueOnChange: nameOnChange,
+    valueOnBlur: nameOnBlur,
+    valueReset,
+  } = useInput((enteredName) => enteredName.trim() !== "");
 
   let formIsValid = false;
   if (enteredNameIsValid) {
     formIsValid = true;
   }
 
-  const nameOnChange = (e) => {
-    setEnteredName(e.target.value);
-  };
-
-  const nameOnBlur = (e) => {
-    setNameIsTouched(true);
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
     if (!enteredNameIsValid) return;
-    console.log(enteredName);
-    setEnteredName("");
-    setNameIsTouched(false);
+    valueReset();
   };
 
   const nameInputClasses = nameInputIsInvalid
     ? " border-red-700 border-2"
-    : null;
+    : "border-2";
   return (
     <>
       <Card>
@@ -69,7 +62,7 @@ const LoginForm = () => {
                 type="submit"
                 disabled={!formIsValid}
                 className={`rounded-full p-2 w-full ${
-                  !formIsValid ? "bg-gray-500/80" : "bg-rose-500"
+                  !formIsValid ? "bg-slate-500" : "bg-rose-500"
                 }`}
               >
                 Submit
