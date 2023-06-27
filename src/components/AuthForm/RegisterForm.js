@@ -1,9 +1,8 @@
-import Card from "../UI/Card";
 import { GrClose } from "react-icons/gr";
 import useInput from "../../hooks/use-input";
 import Button from "../UI/Button";
 
-const LoginForm = () => {
+const RegisterForm = (props) => {
   const {
     enteredValue: enteredName,
     enteredValueIsValid: enteredNameIsValid,
@@ -78,9 +77,12 @@ const LoginForm = () => {
     ? " border-red-700 border-2"
     : "border-2";
   return (
-    <Card>
+    <>
       <div className="flex justify-between items-center p-2">
-        <div className="hover:bg-orange-50 rounded-full p-1">
+        <div
+          className="hover:bg-orange-50 rounded-full p-1"
+          onClick={props.onClick}
+        >
           <GrClose size={13} />
         </div>
         <div>
@@ -156,8 +158,8 @@ const LoginForm = () => {
           </div>
         </form>
       </div>
-    </Card>
+    </>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
