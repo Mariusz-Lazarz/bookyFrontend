@@ -11,7 +11,7 @@ const Backdrop = (props) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className="fixed top-1/3 left-1/2 -translate-x-1/2 rounded-lg bg-white w-1/4 divide-y z-20">
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white w-screen sm:w-1/3 xl:w-1/4  divide-y z-20">
       {props.content}
     </div>
   );
