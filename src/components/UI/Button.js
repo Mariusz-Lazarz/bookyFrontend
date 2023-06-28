@@ -3,7 +3,7 @@ const Button = (props) => {
     <button
       type={props.type}
       disabled={!props.formIsValid}
-      className="rounded-full p-2 w-full bg-rose-500 text-white"
+      className="rounded-lg p-4 w-full bg-rose-500 text-white mb-3"
     >
       {props.text}
     </button>

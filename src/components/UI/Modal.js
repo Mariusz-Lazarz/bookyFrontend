@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 
+
 const Backdrop = (props) => {
   return (
     <div
@@ -11,9 +12,11 @@ const Backdrop = (props) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white w-screen sm:w-1/3 xl:w-1/4  divide-y z-20">
-      {props.content}
-    </div>
+    <>
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white w-screen sm:w-1/3 xl:w-1/4  divide-y z-20">
+          {props.content}
+        </div>
+    </>
   );
 };
 
@@ -25,7 +28,10 @@ const Modal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {createPortal(
-        <ModalOverlay content={props.content} />,
+        <ModalOverlay
+          content={props.content}
+          onTransition={props.onTransition}
+        />,
         document.getElementById("modal-root")
       )}
     </>

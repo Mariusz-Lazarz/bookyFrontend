@@ -78,12 +78,12 @@ const RegisterForm = (props) => {
     : "border-2";
   return (
     <>
-      <div className="flex justify-between items-center p-2">
+      <div className="flex justify-between items-center p-2 mb-2 mt-2">
         <div
-          className="hover:bg-orange-50 rounded-full p-1"
+          className="hover:bg-orange-50 rounded-full p-2 cursor-pointer"
           onClick={props.onClick}
         >
-          <GrClose size={13} />
+          <GrClose size={15} />
         </div>
         <div>
           <p className="text-xl">Create account</p>
