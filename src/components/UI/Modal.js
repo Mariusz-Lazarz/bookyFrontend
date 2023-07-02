@@ -3,10 +3,9 @@ import { CSSTransition } from "react-transition-group";
 
 import classes from "./Modal.module.css";
 
-
 const Backdrop = (props) => {
   return (
-    <CSSTransition in={props.in} timeout={500} unmountOnExit mountOnEnter>
+    <CSSTransition in={props.in} timeout={200} unmountOnExit mountOnEnter>
       <div
         className="fixed h-screen w-screen bg-gray-500/70 top-0 left-0 z-10"
         onClick={props.onClick}
@@ -17,9 +16,22 @@ const Backdrop = (props) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className="fixed top-1/3 left-1/2 -translate-x-1/2 rounded-lg bg-white w-1/4 divide-y z-20">
-      {props.content}
-    </div>
+    <CSSTransition
+      in={props.in}
+      timeout={200}
+      unmountOnExit
+      mountOnEnter
+      classNames={{
+        enter: classes.myNodeEnter,
+        enterActive: classes.myNodeEnter,
+        exit: classes.myNodeExit,
+        exitActive: classes.myNodeExitActive,
+      }}
+    >
+      <div className="fixed top-1/3 left-1/2 -translate-x-1/2 rounded-lg bg-white w-1/4 divide-y z-20">
+        {props.content}
+      </div>
+    </CSSTransition>
   );
 };
 
@@ -31,7 +43,7 @@ const Modal = (props) => {
         document.getElementById("backdrop-root")
       )}
       {createPortal(
-        <ModalOverlay content={props.content} />,
+        <ModalOverlay content={props.content} in={props.in} />,
         document.getElementById("modal-root")
       )}
     </>

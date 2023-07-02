@@ -3,12 +3,12 @@
 }
 .myNodeEnterActive {
   opacity: 1;
-  transition: opacity 500ms;
+  transition: opacity 200ms;
 }
 .myNodeExit {
   opacity: 1;
 }
 .myNodeExitActive {
   opacity: 0;
-  transition: opacity 500ms;
+  transition: opacity 200ms;
 }
