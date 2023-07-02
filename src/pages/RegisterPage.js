@@ -9,11 +9,13 @@ const RegisterPage = () => {
   return (
     <>
       <button onClick={modalOnClick}>Toggle modal</button>
-      <Modal
-        onClick={modalOnClick}
-        in={toggleModal}
-        content={<RegisterForm onClick={modalOnClick} />}
-      />
+      {toggleModal && (
+        <Modal
+          onClick={modalOnClick}
+          onTransition 
+          content={<RegisterForm onClick={modalOnClick} />}
+        />
+      )}
     </>
   );
 };

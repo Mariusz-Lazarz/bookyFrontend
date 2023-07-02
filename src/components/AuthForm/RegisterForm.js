@@ -78,21 +78,21 @@ const RegisterForm = (props) => {
     : "border-2";
   return (
     <>
-      <div className="flex justify-between items-center p-2">
+      <div className="flex justify-between items-center p-2 mb-2 mt-2">
         <div
-          className="hover:bg-orange-50 rounded-full p-1"
+          className="hover:bg-orange-50 rounded-full p-2 cursor-pointer"
           onClick={props.onClick}
         >
-          <GrClose size={13} />
+          <GrClose size={15} />
         </div>
         <div>
-          <p>Login in</p>
+          <p className="text-xl">Create account</p>
         </div>
         <div></div>
       </div>
       <div className="p-2">
-        <h1 className="text-lg font-medium mb-2">Welcome to booky</h1>
-        <form className=" flex flex-col gap-2" onSubmit={submitHandler}>
+        <h1 className="text-2xl font-medium mb-2">Welcome to booky</h1>
+        <form className=" flex flex-col gap-4" onSubmit={submitHandler}>
           <div>
             <input
               type="text"
@@ -101,7 +101,7 @@ const RegisterForm = (props) => {
               value={enteredName}
               onChange={nameOnChange}
               onBlur={nameOnBlur}
-              className={`${nameInputClasses} rounded-md p-1 w-full outline-none`}
+              className={`${nameInputClasses} rounded-md p-3 w-full outline-none`}
             ></input>
             {nameInputIsInvalid && (
               <p className="text-red-700 font-semibold">Enter a valid name!</p>
@@ -115,7 +115,7 @@ const RegisterForm = (props) => {
               value={enteredEmail}
               onChange={emailOnChange}
               onBlur={emailOnBlur}
-              className={`${emailInputClasses} rounded-md p-1 w-full outline-none`}
+              className={`${emailInputClasses} rounded-md p-3 w-full outline-none`}
             ></input>
             {emailInputIsInvalid && (
               <p className="text-red-700 font-semibold">Enter a valid email!</p>
@@ -129,7 +129,7 @@ const RegisterForm = (props) => {
               value={enteredPassword}
               onChange={passwordOnChange}
               onBlur={passwordOnBlur}
-              className={`${passwordInputClasses} rounded-md p-1 w-full outline-none`}
+              className={`${passwordInputClasses} rounded-md p-3 w-full outline-none`}
             ></input>
             {passwordInputIsInvalid && (
               <p className="text-red-700 font-semibold">
@@ -145,7 +145,7 @@ const RegisterForm = (props) => {
               value={enteredConfirmPassword}
               onChange={confirmPasswordOnChange}
               onBlur={confirmPasswordOnBlur}
-              className={`${confirmPasswordInputClasses} rounded-md p-1 w-full outline-none`}
+              className={`${confirmPasswordInputClasses} rounded-md p-3 w-full outline-none`}
             ></input>
             {confirmPasswordInputIsInvalid && (
               <p className="text-red-700 font-semibold">
